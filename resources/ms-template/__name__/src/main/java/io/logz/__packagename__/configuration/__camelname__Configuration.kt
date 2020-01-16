@@ -1,4 +1,4 @@
-package io.logz.logsgenerator.configuration
+package io.logz.__packagename__.configuration
 
 import com.logshero.gaia.infra.engine.EngineWithSharedDBConfiguration
 import org.json.simple.JSONObject

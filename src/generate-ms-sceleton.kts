@@ -1,5 +1,6 @@
 import java.io.File
 import kotlin.streams.toList
+import kotlin.system.exitProcess
 
 class Config {
     val templateDir: File
@@ -29,20 +30,28 @@ fun substitute(str: String, cfg: Config): String {
     return currStr
 }
 
-val cfg = Config(args)
-println("${cfg.outputDir.absolutePath} ${cfg.templateDir.absolutePath}")
-var outputDir = cfg.outputDir
-
-cfg.templateDir.copyRecursively(outputDir, overwrite = true)
-
-cfg.outputDir.walkBottomUp().forEach {
-    val newName = "${it.absolutePath.substringBeforeLast("/")}/${substitute(it.name, cfg)}"
-    it.renameTo(File(newName))
+fun substituteFileName(file: File): File {
+    val newName = "${file.absolutePath.substringBeforeLast("/")}/${substitute(file.name, cfg)}"
+    return File(newName)
 }
 
-cfg.outputDir.walkBottomUp().filter { it.isFile }.forEach {
-    println("--- file ${it.absolutePath}")
+val cfg = Config(args)
+println("${cfg.outputDir.absolutePath} ${cfg.templateDir.absolutePath}")
+
+val rootDir = substituteFileName(File("${cfg.outputDir}/${cfg.templateDir.name}"))
+rootDir.mkdir()
+
+println("Root dir: ${rootDir.absolutePath}")
+
+if(!cfg.templateDir.copyRecursively(rootDir)) {
+    println("Template copy from ${cfg.templateDir.absolutePath} to ${cfg.outputDir.absolutePath} fault")
+    exitProcess(-1)
+}
+
+rootDir.walkBottomUp().forEach { it.renameTo(substituteFileName(it)) }
+
+rootDir.walkBottomUp().filter { it.isFile }.forEach {
+    println("---> ${it.absolutePath}")
     val content = it.readLines().stream().map {l -> substitute(l, cfg)}.toList().joinToString("\n")
     it.writeText(content)
-    println("END --- file ${it.absolutePath}")
 }

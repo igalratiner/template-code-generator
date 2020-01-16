@@ -1,7 +1,7 @@
 apply plugin: 'logzio-engine'
 
 logzioEngine {
-    mainClassName = 'io.logz.logsgenerator.__camelname__Main'
+    mainClassName = 'io.logz.__packagename__.__camelname__Main'
     apolloServiceId = 999
 }
 

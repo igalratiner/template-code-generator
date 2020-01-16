@@ -1,7 +1,7 @@
-package io.logz.logsgenerator
+package io.logz.__packagename__
 
 import com.logshero.gaia.infra.engine.StandaloneEngineContainer
-import io.logz.logsgenerator.configuration.LogsGeneratorConfiguration
+import io.logz.__packagename__.configuration.__camelname__Configuration
 import java.time.Duration
 
 
