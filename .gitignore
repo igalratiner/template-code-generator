@@ -1,0 +1,22 @@
+# Gradle
+.gradle
+build/
+
+# Intellij
+.idea
+*.ipr
+*.iml
+*.iws
+out/
+
+# General
+target/
+*.class
+.DS_Store
+
+# Docker
+*.tar
+
+# Nginx routes dynamic conf
+docker/nginx-router/nginx.conf
+*.tar.gz

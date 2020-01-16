@@ -1,0 +1,16 @@
+apply plugin: 'logzio-engine'
+
+logzioEngine {
+    mainClassName = 'io.logz.logsgenerator.__camelname__Main'
+    apolloServiceId = 999
+}
+
+dependencies {
+    compile project(':gaia-infra')
+    compile project(':infrastructure:engine')
+    compile project(':infrastructure:concurrency')
+    compile project(':templates-validator:client')
+
+    testCompile project(path: ':infrastructure:engine', configuration: 'testClasses')
+
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+
+    <property name="ENGINE_NAME" value="__name__"/>
+    <property name="LOG_DIR" value="/var/log/gaia"/>
+
+    <include file="/etc/gaia/logback-common.xml"/>
+
+    <logger name="io.logz.jmx2logzio.Utils.MetricsPipeline" level="WARN"/>
+    <logger name="io.logz.jmx2logzio.clients.ListenerWriter" level="WARN"/>
+
+    <logger name="io.logz.jmx2kafka.MetricsPipeline" level="WARN"/>
+    <logger name="zuul.server.nettylog" level="WARN"/>
+    <logger name="zuul.origin.nettylog" level="WARN"/>
+
+    <logger name="com.logshero.gaia.metrics" level="INFO" additivity="false">
+        <appender-ref ref="default.metrics"/>
+        <appender-ref ref="logzio.metrics"/>
+    </logger>
+
+    <logger name="io.logz.infrastructure.rest.server.logging.LoggingFilter" level="INFO" additivity="false">
+        <appender-ref ref="default.accesslog"/>
+        <appender-ref ref="logzio.accesslog"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="default.console"/>
+        <appender-ref ref="default.file"/>
+        <appender-ref ref="logzio.file"/>
+    </root>
+</configuration>

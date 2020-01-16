@@ -1,0 +1,7 @@
+archivesBaseName = '__name__-client'
+
+apply plugin: 'java'
+
+dependencies {
+    compile project(':infrastructure:rest:rest-client')
+}
