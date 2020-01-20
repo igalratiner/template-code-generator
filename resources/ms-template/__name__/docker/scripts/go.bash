@@ -4,9 +4,9 @@ source /root/set-error-handling.bash
 source /root/jvm_memory.bash
 
 # update configuration
-ORIG_CONF_FILE=/mypackage/conf/logs-generator.conf
-CONF_FILE=/etc/gaia/logs-generator.conf
-RUN_FILE=/mypackage/bin/logs-generator
+ORIG_CONF_FILE=/mypackage/conf/__name__.conf
+CONF_FILE=/etc/gaia/__name__.conf
+RUN_FILE=/mypackage/bin/__name__
 LOGBACK_FILE=/mypackage/conf/logback.xml
 
 MYHOST=`hostname`
