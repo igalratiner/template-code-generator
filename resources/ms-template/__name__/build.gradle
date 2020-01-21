@@ -2,15 +2,11 @@ apply plugin: 'logzio-engine'
 
 logzioEngine {
     mainClassName = 'io.logz.__packagename__.__camelname__Main'
-    apolloServiceId = 999
+    //apolloServiceId = 999
 }
 
 dependencies {
-    compile project(':gaia-infra')
     compile project(':infrastructure:engine')
-    compile project(':infrastructure:concurrency')
-    compile project(':templates-validator:client')
-
+    compile project(':infrastructure:database')
     testCompile project(path: ':infrastructure:engine', configuration: 'testClasses')
-
 }

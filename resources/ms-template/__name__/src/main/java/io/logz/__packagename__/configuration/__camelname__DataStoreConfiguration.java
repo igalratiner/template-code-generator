@@ -7,11 +7,11 @@ import org.json.simple.JSONObject;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-public class __camelname__DatasourceConfiguration extends DataStoreConfiguration {
+public class __camelname__DataStoreConfiguration extends DataStoreConfiguration {
 
     private final String schema;
 
-    public __camelname__DatasourceConfiguration(JSONObject json) {
+    public __camelname__DataStoreConfiguration(JSONObject json) {
         super(json, StringUtils.EMPTY);
 
         this.schema = this.sectionObject.getString("schema");

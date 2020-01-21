@@ -6,7 +6,7 @@ import com.google.inject.Provides
 import com.logshero.gaia.common.metric.GaiaMetricRegistry
 import com.logshero.gaia.datastore.ManagedDataSource
 import com.logshero.gaia.di.BaseMyBatisModule
-import io.logz.__packagename__.configuration.__camelname__DatasourceConfiguration
+import io.logz.__packagename__.configuration.__camelname__DataStoreConfiguration
 
 import javax.inject.Singleton
 import javax.sql.DataSource
@@ -16,7 +16,7 @@ import java.util.HashSet
 import java.util.function.Consumer
 import javax.inject.Named
 
-class MyBatis__camelname__Module(val configuration: __camelname__DatasourceConfiguration) : PrivateModule() {
+class MyBatis__camelname__Module(val configuration: __camelname__DataStoreConfiguration) : PrivateModule() {
 
     private val exposedMappers = HashSet<Class<*>>()
 
